@@ -10,16 +10,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class TextEncrypt extends AppCompatActivity {
 
     Button encrypt, decrypt;
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_encrypt);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeButtonEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Crypt Text");
         actionBar.show();
 

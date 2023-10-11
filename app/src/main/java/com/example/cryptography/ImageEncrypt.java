@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class ImageEncrypt extends AppCompatActivity {
@@ -43,25 +44,32 @@ public class ImageEncrypt extends AppCompatActivity {
     ClipboardManager clipboardManager;
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_encrypt);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Crypt Image");
         actionBar.show();
 
         encryptBtn = findViewById(R.id.enc_img_btn);
         decryptBtn = findViewById(R.id.dec_img_btn);
-      //  encImgToText = findViewById(R.id.encText);
+        //  encImgToText = findViewById(R.id.encText);
         imageView = findViewById(R.id.imageView);
         clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 
         encryptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ContextCompat.checkSelfPermission(ImageEncrypt.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(ImageEncrypt.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+                if(ContextCompat.checkSelfPermission(ImageEncrypt.this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(ImageEncrypt.this, new String[]{Manifest.permission.READ_MEDIA_IMAGES}, 100);
                 }
                 else{
                     selectImage();
