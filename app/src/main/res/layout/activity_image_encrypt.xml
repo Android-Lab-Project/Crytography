@@ -50,36 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/enc_img_btn" />
 
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/copy_img_btn_dec"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dec_img_btn">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/encText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:background="@color/white"
-                android:padding="10dp"
-                android:hint="Enter your text here..."
-                android:textColor="@color/navy_blue"
-                android:textColorHint="@color/navy_blue" />
-
-        </LinearLayout>
-    </ScrollView>
 
     <Button
         android:id="@+id/copy_img_btn_dec"

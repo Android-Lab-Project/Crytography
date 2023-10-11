@@ -53,7 +53,7 @@ public class ImageEncrypt extends AppCompatActivity {
 
         encryptBtn = findViewById(R.id.enc_img_btn);
         decryptBtn = findViewById(R.id.dec_img_btn);
-        encImgToText = findViewById(R.id.encText);
+      //  encImgToText = findViewById(R.id.encText);
         imageView = findViewById(R.id.imageView);
         clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 
@@ -66,6 +66,18 @@ public class ImageEncrypt extends AppCompatActivity {
                 else{
                     selectImage();
                 }
+//                if (ContextCompat.checkSelfPermission(ImageEncrypt.this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+//                    ActivityCompat.requestPermissions(ImageEncrypt.this, new String[]{Manifest.permission.READ_MEDIA_IMAGES}, 100);
+//                } else {
+//                    selectImage();
+//                }
+//                if (ContextCompat.checkSelfPermission(ImageEncrypt.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                    ActivityCompat.requestPermissions(ImageEncrypt.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+//                } else {
+//                    selectImage();
+//                }
+
+
             }
         });
 
@@ -86,16 +98,29 @@ public class ImageEncrypt extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"),100);
     }
 
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if(requestCode == 100 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+//            selectImage();
+//        }
+//        else {
+//            Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == 100 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-            selectImage();
-        }
-        else {
-            Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+        if (requestCode == 100) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                selectImage();
+            } else {
+                Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
