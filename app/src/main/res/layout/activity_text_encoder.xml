@@ -57,7 +57,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:textSize="20sp"
+                        android:textSize="14sp"
                         android:backgroundTint="#00000000"
                         android:hint="Enter you text here..."
                         android:textColor="@color/navy_blue"
